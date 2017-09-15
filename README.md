@@ -1,2 +1,2 @@
-# algorithms
+ # algos
 Testing various algoritms
