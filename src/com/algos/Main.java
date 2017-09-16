@@ -3,11 +3,13 @@ package com.algos;
 import com.helpers.Helpers;
 
 public class Main {
-    private static int SIZE = 200;
+    private static int SIZE = 17;
 
     public static void main(String[] args){
         Main x = new Main();
-        x.search();
+        //x.search();
+        //x.largestCommonSubsequence();
+        x.maximalArray();
     }
 
     private Integer[] sort(){
@@ -26,7 +28,7 @@ public class Main {
         return arr;
     }
 
-    private void search() {
+    private void search(){
         System.out.println("Binary search");
 
         Integer[] arr = sort();
@@ -35,5 +37,29 @@ public class Main {
         b.setSearchValue(79);
         boolean found = b.search(arr, 0, SIZE -1);
         System.out.println(b.getSearchValue() + " was " + (found ? "" : "not ") + "found in the array");
+    }
+
+    private void maximalArray(){
+        Integer arr[] = Helpers.getRandomArray(SIZE);
+        Integer deltas[] = Helpers.getDeltas(arr);
+        Helpers.printArray(deltas);
+
+        MaximalArray m = new MaximalArray(-1, 0, SIZE -2);
+        m.getMaximalArray(deltas, m.getStartArr(), m.getEndArr());
+
+        System.out.println("Maximal array is: ");
+        Helpers.printArray(deltas, m.getStartArr(), m.getEndArr());
+    }
+
+    private void largestCommonSubsequence(){
+        Integer arr[] = Helpers.getRandomArray(SIZE);
+        int sequenceSize = 3;
+        System.out.println("Largest common subsequence of size " + sequenceSize + " in :");
+        Helpers.printArray(arr);
+
+        LargestCommonSubsequence l = new LargestCommonSubsequence();
+        Integer largestSubsequence[] = l.lcs(arr, sequenceSize);
+        System.out.println("is: ");
+        Helpers.printArray(largestSubsequence);
     }
 }
