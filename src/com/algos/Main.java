@@ -3,16 +3,18 @@ package com.algos;
 import com.helpers.Helpers;
 
 public class Main {
-    private static int SIZE = 17;
+    private static int SIZE = 10;
 
     public static void main(String[] args){
         Main x = new Main();
         //x.search();
         //x.largestCommonSubsequence();
-        x.maximalArray();
+        //x.maximalArray();
+        x.heapSort();
+        //x.palindrome();
     }
 
-    private Integer[] sort(){
+    private Integer[] mergeSort(){
         System.out.println("Merge Sort");
 
         Integer arr[] = Helpers.getRandomArray(SIZE);
@@ -31,7 +33,7 @@ public class Main {
     private void search(){
         System.out.println("Binary search");
 
-        Integer[] arr = sort();
+        Integer[] arr = mergeSort();
 
         BinarySearch b = new BinarySearch();
         b.setSearchValue(79);
@@ -61,5 +63,25 @@ public class Main {
         Integer largestSubsequence[] = l.lcs(arr, sequenceSize);
         System.out.println("is: ");
         Helpers.printArray(largestSubsequence);
+    }
+
+    private void heapSort(){
+        Integer arr[] = Helpers.getRandomArray(SIZE);
+        System.out.println("Before:");
+        Helpers.printArray(arr);
+
+        HeapSort hs = new HeapSort();
+        hs.heapSort(arr);
+
+        System.out.println("After:");
+        Helpers.printArray(arr);
+    }
+
+    private void palindrome(){
+        String str = "AB45243242CC31~#@&% ba";
+
+        Palindrome p = new Palindrome();
+        boolean isPalindrome = p.palindrome(str);
+        System.out.println(str + " is "+ (!isPalindrome ? "not ": "") + "a palindrome");
     }
 }
