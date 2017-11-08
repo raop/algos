@@ -1,5 +1,7 @@
 package com.algos;
 
+import com.helpers.Helpers;
+
 import java.util.ArrayList;
 
 public class HeapSort {
@@ -25,7 +27,7 @@ public class HeapSort {
                 }
 
                 if(node != larger){
-                    swap(arr, larger, node);
+                    Helpers.swap(arr, larger, node);
                     maxHeapify(arr, larger);
                 }
             }
@@ -64,11 +66,5 @@ public class HeapSort {
     // parent of arr[5] and arr[6] is arr[2]
     private Integer parent(Integer child){
         return child-1 / 2;
-    }
-
-    private void swap(Integer[] arr, Integer first, Integer second){
-        int tmp = arr[first];
-        arr[first] = arr[second];
-        arr[second] = tmp;
     }
 }

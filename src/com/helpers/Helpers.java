@@ -3,12 +3,12 @@ package com.helpers;
 import java.util.ArrayList;
 
 public class Helpers {
-    public static int MAX_RANDOM =100;
+    public static int MAX_RANDOM =1000;
 
-    public static Integer[] getRandomArray(int size) {
+    public static Integer[] getRandomArray(int size, Integer... digits) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         for(int i = 0; i < size; i++) {
-            list.add(getRandomInt());
+            list.add(digits.length > 0 ? getRandomInt(digits[0]) : getRandomInt());
         }
         Integer[] intArr = new Integer[size];
         return list.toArray(intArr);
@@ -36,6 +36,14 @@ public class Helpers {
         return d.intValue();
     }
 
+    public static int getRandomInt(int digits) {
+        int ret = 0;
+        for (int i =0; i < digits; i++){
+            ret += Math.random() * 10 * Math.pow(10, i);
+        }
+        return ret;
+    }
+
     public static Integer[] getDeltas(Integer[] arr){
         ArrayList<Integer> list = new ArrayList<>();
         for(int i=1; i< arr.length; i ++){
@@ -43,5 +51,11 @@ public class Helpers {
         }
         Integer[] intArr = new Integer[arr.length - 1];
         return list.toArray(intArr);
+    }
+
+    public static void swap(Integer[] arr, Integer first, Integer second){
+        int tmp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = tmp;
     }
 }
