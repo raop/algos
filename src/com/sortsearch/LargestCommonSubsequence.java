@@ -1,4 +1,4 @@
-package com.algos;
+package com.sortsearch;
 
 public class LargestCommonSubsequence {
 

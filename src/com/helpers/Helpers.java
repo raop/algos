@@ -3,10 +3,11 @@ package com.helpers;
 import java.util.ArrayList;
 
 public class Helpers {
-    public static int MAX_RANDOM =1000;
+    public static int MAX_RANDOM =100;
 
     public static Integer[] getRandomArray(int size, Integer... digits) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Integer> list = new ArrayList<>();
+
         for(int i = 0; i < size; i++) {
             list.add(digits.length > 0 ? getRandomInt(digits[0]) : getRandomInt());
         }

@@ -1,5 +1,8 @@
-package com.algos;
+package com.sortsearch;
 
+/**
+ * In an array, find maximum sub-array of values
+ */
 public class MaximalArray {
     private int max = -1;
     private int startArr = 0;

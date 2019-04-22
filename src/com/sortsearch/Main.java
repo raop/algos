@@ -1,9 +1,12 @@
-package com.algos;
+package com.sortsearch;
 
 import com.helpers.Helpers;
 
+import java.util.Calendar;
+import java.util.Locale;
+
 public class Main {
-    private static int ARR_SIZE = 32;
+    private static int ARR_SIZE = 20;
     private static int NO_OF_DIGITS = 3;
 
     public static void main(String[] args){
@@ -13,9 +16,14 @@ public class Main {
         //x.maximalArray();
         //x.heapSort();
         //x.quickSort();
-        x.countingSort();
+        //x.countingSort();
         //x.radixSort();
-        //x.palindrome();
+        // x.interview();
+
+        Calendar cal = new Calendar.Builder().setDate(2015, 7, 5).build();
+        System.out.println(cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US));
+        // return new String(cal.get(Calendar.DAY_OF_WEEK));
+
     }
 
     private Integer[] mergeSort(){
@@ -59,7 +67,7 @@ public class Main {
 
     private void largestCommonSubsequence(){
         Integer arr[] = Helpers.getRandomArray(ARR_SIZE);
-        int sequenceSize = 3;
+        int sequenceSize = 5;
         System.out.println("Largest common subsequence of size " + sequenceSize + " in :");
         Helpers.printArray(arr);
 
@@ -117,11 +125,30 @@ public class Main {
         Helpers.printArray(arr);
     }
 
-    private void palindrome(){
-        String str = "AB45243242CC31~#@&% ba";
+    private void interview(){
 
-        Palindrome p = new Palindrome();
-        boolean isPalindrome = p.palindrome(str);
-        System.out.println(str + " is "+ (!isPalindrome ? "not ": "") + "a palindrome");
+        Integer arr[] = Helpers.getRandomArray(ARR_SIZE);
+        System.out.println("Array:");
+        Helpers.printArray(arr);
+
+        Integer ret = interviewHelper(arr);
+        System.out.println("Centered avg: " + ret);
     }
+
+    private Integer interviewHelper(Integer[] arr){
+        int min = 0, max = 0, sum = arr[0];
+        for(int i =1; i < arr.length; i++){
+            if(arr[i] < arr[min]){
+                min = i;
+            }
+            if (arr[i] > arr[max]){
+                max = i;
+            }
+            sum += arr[i];
+        }
+
+        return (sum - arr[min] - arr[max]) / (arr.length - 2);
+    }
+
+
 }

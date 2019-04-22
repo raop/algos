@@ -1,4 +1,4 @@
-package com.algos;
+package com.sortsearch;
 
 public class BinarySearch {
     private static int DEFAULT = 1;

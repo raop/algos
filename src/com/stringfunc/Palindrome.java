@@ -1,5 +1,8 @@
-package com.algos;
+package com.stringfunc;
 
+/**
+ * Is a string a palindrome?
+ */
 public class Palindrome {
 
     public boolean palindrome(String str){
@@ -34,5 +37,13 @@ public class Palindrome {
             return true;
         }
         return false;
+    }
+
+    public static void main(String[] args){
+        String str = "AB45243242CC31~#@&% ba";
+
+        Palindrome p = new Palindrome();
+        boolean isPalindrome = p.palindrome(str);
+        System.out.println(str + " is "+ (!isPalindrome ? "not ": "") + "a palindrome");
     }
 }
