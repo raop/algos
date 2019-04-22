@@ -4,7 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Scanner;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -12,6 +13,8 @@ import static java.util.stream.Collectors.toList;
  * Helper methods for reading & writing
  */
 public class Io {
+
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static List<List<Integer>> readIntListFromFile(String filename) {
         List<List<Integer>> queries = new ArrayList<>();
@@ -86,6 +89,12 @@ public class Io {
             e.printStackTrace();
         }
         return outList;
+    }
+
+    public static Integer[] readIntArrFromStdin(){
+
+        Integer[] arr = Arrays.stream(scanner.nextLine().replace("\\s+$", "").split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
+        return arr;
     }
 
     public static List<List<String>> readStringListFromFile(String filename, String delimiter) {
