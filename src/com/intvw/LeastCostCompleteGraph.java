@@ -10,4 +10,19 @@ package com.intvw;
  */
 public class LeastCostCompleteGraph {
 
+    public static void main(String[] args) {
+
+        String str = "abcde?";
+    }
+
+    private static boolean isGraphConnected (int[][] graph){
+
+        for(int row=0; row < graph.length; row++){
+
+        }
+
+        return false;
+    }
 }
+
+
