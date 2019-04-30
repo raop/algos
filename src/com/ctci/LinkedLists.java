@@ -4,6 +4,7 @@ import com.helpers.Io;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class LinkedLists {
 
@@ -41,7 +42,7 @@ public class LinkedLists {
                 System.out.print(" -> ");
             }
             current = current.next;
-            
+
         }
         System.out.println();
     }
@@ -82,11 +83,42 @@ public class LinkedLists {
         }
     }
 
+    /*
+    Remove the nth last element from a list
+    If passed 3, remove the 3rd last element from the list
+     */
+    private static Integer nthLastElement(Node root, int n) {
+        if(n <=0) {
+            return -1;
+        }
+
+        Node follower = root;
+        Node leader = root;
+
+        while(n > 0 && leader !=null){
+            leader = leader.next;
+            n--;
+        }
+
+        if(leader == null){
+            return -1;
+        }
+
+        while(leader != null){
+            follower= follower.next;
+            leader = leader.next;
+        }
+
+        return (Integer) follower.value;
+    }
+
+
     public static void main(String[] args) {
 
         Node root = buildList(Io.readIntArrFromStdin());
         printList(root);
         removeDuplicatesNoSet(root);
         printList(root);
+        System.out.println(nthLastElement(root, 3));
     }
 }
