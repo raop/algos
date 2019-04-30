@@ -38,8 +38,9 @@ public class Anagram {
     }
 
     public static void main(String[] args){
-        String str1 = "magna";
+        String str1 = "magana";
         String str2 = "Nagma";
+
         System.out.println(Anagram.isAnagram(str1, str2) ? "Anagram" : "Not Anagram");
     }
 }

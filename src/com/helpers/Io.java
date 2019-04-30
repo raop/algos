@@ -38,19 +38,54 @@ public class Io {
         return queries;
     }
 
-    public static int[][] readIntGridFromFile(String filename) {
-        List<List<Integer>> listOfList = readIntListFromFile(filename);
-        int n = listOfList.size();
-        int [][] grid = new int[n][n];
+    public static List<List<Integer>> readIntListFromStdin(String delimiter){
+        if(delimiter == null){
+            delimiter = " ";
+        }
 
-        for(int i=0; i<n; i++){
+        List<List<Integer>> outList = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String line;
+        try {
+            while ((line = reader.readLine()) != null && !line.isEmpty()) {
+                outList.add(Arrays.stream(line.split(delimiter)).map(Integer::parseInt).collect(toList()));
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        return outList;
+    }
+
+
+    public static int[][] readIntGridFromList(List<List<Integer>> listOfList) {
+        int n = listOfList.size();
+        int[][] grid = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
             List<Integer> list = listOfList.get(i);
-            for(int j=0; j<n;j++) {
+            for (int j = 0; j < n; j++) {
                 grid[i][j] = list.get(j);
             }
         }
 
         return grid;
+    }
+
+    public static int[][] readIntGridFromFile(String filename) {
+        List<List<Integer>> listOfList = readIntListFromFile(filename);
+        return readIntGridFromList(listOfList);
+    }
+
+    public static int[][] readIntGridFromStdIn(){
+        List<List<Integer>> listOfList = readIntListFromStdin(" ");
+        return readIntGridFromList(listOfList);
+    }
+
+    public static Integer[] readIntArrFromStdin(){
+
+        Integer[] arr = Arrays.stream(scanner.nextLine().replace("\\s+$", "").split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
+        return arr;
     }
 
     public static List<List<String>> readStringListFromStdin(String delimiter){
@@ -70,31 +105,6 @@ public class Io {
             e.printStackTrace();
         }
         return outList;
-    }
-
-    public static List<List<Integer>> readIntListFromStdin(String delimiter){
-        if(delimiter == null){
-            delimiter = " ";
-        }
-
-        List<List<Integer>> outList = new ArrayList<>();
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                outList.add(Arrays.stream(line.split(delimiter)).map(Integer::parseInt).collect(toList()));
-            }
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        return outList;
-    }
-
-    public static Integer[] readIntArrFromStdin(){
-
-        Integer[] arr = Arrays.stream(scanner.nextLine().replace("\\s+$", "").split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
-        return arr;
     }
 
     public static List<List<String>> readStringListFromFile(String filename, String delimiter) {

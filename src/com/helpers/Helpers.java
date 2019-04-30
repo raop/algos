@@ -32,6 +32,15 @@ public class Helpers {
         System.out.print("\n");
     }
 
+    public static void printMatrix(int[][] matrix){
+        for(int row=0; row< matrix.length; row++){
+            for(int col=0; col< matrix[row].length; col++){
+                System.out.print("[" + matrix[row][col] + "]\t");
+            }
+            System.out.println();
+        }
+    }
+
     public static int getRandomInt() {
         Double d = Math.random() * MAX_RANDOM;
         return d.intValue();
